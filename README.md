@@ -72,6 +72,265 @@ Raw Data → Data Cleaning → Feature Engineering → Model Training → Evalua
  (303 rows)  (297 rows)   + Vector Assembly   (LR, RF, GBT)   Analysis   (Pipeline)
 ```
 
+## 🔄 Project Workflows
+
+### 🔬 Data Processing Workflow
+
+```mermaid
+graph TD
+    A[📊 Raw Dataset<br/>heart-disease.csv] --> B[🔍 Data Inspection]
+    B --> C[📋 Schema Validation]
+    C --> D[🧹 Data Cleaning]
+    D --> E[📈 Exploratory Analysis]
+    E --> F[🔧 Feature Engineering]
+    F --> G[✅ Data Validation]
+    G --> H[💾 Processed Dataset]
+    
+    D --> D1[Remove Missing Values (?)]
+    D --> D2[Handle Outliers]
+    D --> D3[Data Type Conversion]
+    
+    E --> E1[Statistical Summary]
+    E --> E2[Correlation Analysis]
+    E --> E3[Distribution Analysis]
+    E --> E4[Class Balance Check]
+    
+    F --> F1[Categorical Encoding]
+    F --> F2[Feature Scaling]
+    F --> F3[Vector Assembly]
+    F --> F4[Train-Test Split]
+```
+
+**Key Steps:**
+1. **Data Loading**: Read CSV with Spark DataFrame API
+2. **Quality Assessment**: Check for nulls, duplicates, and data types
+3. **Data Cleaning**: Remove missing values and handle inconsistencies
+4. **Statistical Analysis**: Generate descriptive statistics and visualizations
+5. **Feature Transformation**: Encode categorical variables and assemble feature vectors
+6. **Data Validation**: Ensure processed data meets ML pipeline requirements
+
+---
+
+### 🤖 ML Pipeline Workflow
+
+```mermaid
+graph TD
+    A[📊 Processed Dataset] --> B[🔀 Data Splitting]
+    B --> C[🏗️ Pipeline Construction]
+    C --> D[🎯 Model Training]
+    D --> E[📊 Model Evaluation]
+    E --> F[🏆 Model Selection]
+    F --> G[💾 Model Persistence]
+    G --> H[🚀 Production Deployment]
+    
+    B --> B1[Training Set<br/>70%]
+    B --> B2[Test Set<br/>30%]
+    
+    C --> C1[StringIndexers]
+    C --> C2[VectorAssembler]
+    C --> C3[ML Algorithms]
+    
+    D --> D1[Logistic Regression]
+    D --> D2[Random Forest]
+    D --> D3[Gradient Boosted Trees]
+    
+    E --> E1[Accuracy Metrics]
+    E --> E2[Confusion Matrix]
+    E --> E3[Feature Importance]
+    E --> E4[Cross-Validation]
+    
+    F --> F1[Performance Comparison]
+    F --> F2[Model Interpretability]
+    F --> F3[Business Requirements]
+```
+
+**Training Process:**
+1. **Data Splitting**: 70% training, 30% testing with stratified sampling
+2. **Pipeline Assembly**: Chain preprocessors and estimators
+3. **Model Training**: Fit multiple algorithms simultaneously
+4. **Performance Evaluation**: Calculate comprehensive metrics
+5. **Model Comparison**: Rank models by accuracy and interpretability
+6. **Production Preparation**: Save best performing models
+
+---
+
+### 💻 Development Workflow
+
+```mermaid
+graph TD
+    A[⚙️ Environment Setup] --> B[📚 Requirements Installation]
+    B --> C[🔧 Spark Configuration]
+    C --> D[📁 Project Structure]
+    D --> E[🧪 Development Phase]
+    E --> F[🧪 Testing Phase]
+    F --> G[📖 Documentation]
+    G --> H[🚀 Deployment]
+    
+    A --> A1[Java JDK Installation]
+    A --> A2[Python 3.9+ Setup]
+    A --> A3[Virtual Environment]
+    
+    B --> B1[PySpark 3.5.1]
+    B --> B2[ML Dependencies]
+    B --> B3[Visualization Tools]
+    
+    E --> E1[Data Exploration]
+    E --> E2[Model Development]
+    E --> E3[Pipeline Creation]
+    E --> E4[Performance Tuning]
+    
+    F --> F1[Unit Testing]
+    F --> F2[Integration Testing]
+    F --> F3[Model Validation]
+    F --> F4[Performance Testing]
+    
+    H --> H1[Local Deployment]
+    H --> H2[Cloud Deployment]
+    H --> H3[API Endpoint]
+```
+
+**Development Steps:**
+1. **Environment Setup**: Configure Java, Python, and Spark
+2. **Dependency Management**: Install required packages and libraries
+3. **Code Development**: Implement data processing and ML pipelines
+4. **Testing**: Validate functionality and model performance
+5. **Documentation**: Create comprehensive project documentation
+6. **Deployment**: Prepare for production environment
+
+---
+
+### 👥 User Workflow (Prediction System)
+
+```mermaid
+graph TD
+    A[🏥 Patient Data Input] --> B[📋 Data Validation]
+    B --> C[🔧 Preprocessing]
+    C --> D[🤖 Model Inference]
+    D --> E[📊 Risk Assessment]
+    E --> F[📄 Clinical Report]
+    F --> G[👨‍⚕️ Medical Review]
+    
+    A --> A1[Medical History]
+    A --> A2[Lab Results]
+    A --> A3[Physical Examination]
+    
+    B --> B1[Required Fields Check]
+    B --> B2[Data Type Validation]
+    B --> B3[Range Validation]
+    
+    C --> C1[Feature Encoding]
+    C --> C2[Vector Assembly]
+    C --> C3[Normalization]
+    
+    D --> D1[Load Trained Model]
+    D --> D2[Generate Predictions]
+    D --> D3[Probability Scores]
+    
+    E --> E1[Risk Classification]
+    E --> E2[Confidence Intervals]
+    E --> E3[Feature Contributions]
+    
+    F --> F1[Risk Score Report]
+    F --> F2[Recommendation Summary]
+    F --> F3[Follow-up Guidelines]
+```
+
+**User Journey:**
+1. **Data Collection**: Gather patient medical information
+2. **Input Validation**: Ensure data completeness and accuracy
+3. **Preprocessing**: Transform data to model-ready format
+4. **Prediction**: Run inference using trained ML models
+5. **Risk Assessment**: Interpret model outputs and confidence levels
+6. **Report Generation**: Create actionable clinical insights
+7. **Medical Decision**: Healthcare provider reviews and acts on recommendations
+
+---
+
+### ⚙️ CI/CD Workflow
+
+```mermaid
+graph TD
+    A[💻 Code Commit] --> B[🔄 Automated Tests]
+    B --> C{✅ Tests Pass?}
+    C -->|Yes| D[📦 Build Process]
+    C -->|No| X[❌ Build Failed]
+    D --> E[🧪 Model Validation]
+    E --> F[📊 Performance Check]
+    F --> G{📈 Meets Standards?}
+    G -->|Yes| H[🚢 Staging Deployment]
+    G -->|No| Y[⚠️ Quality Gate Failed]
+    H --> I[🧪 Integration Testing]
+    I --> J[👁️ Manual Review]
+    J --> K[🚀 Production Release]
+    K --> L[📊 Monitoring]
+    
+    B --> B1[Unit Tests]
+    B --> B2[Data Validation Tests]
+    B --> B3[Model Tests]
+    
+    D --> D1[Docker Image Build]
+    D --> D2[Dependency Check]
+    D --> D3[Security Scan]
+    
+    E --> E1[Model Accuracy Test]
+    E --> E2[Inference Time Check]
+    E --> E3[Memory Usage Test]
+    
+    L --> L1[Performance Metrics]
+    L --> L2[Error Tracking]
+    L --> L3[Model Drift Detection]
+```
+
+**CI/CD Process:**
+1. **Code Integration**: Automated testing on every commit
+2. **Quality Assurance**: Comprehensive test suite execution
+3. **Build Automation**: Docker containerization and artifact creation
+4. **Model Validation**: Performance and accuracy verification
+5. **Staged Deployment**: Gradual rollout with monitoring
+6. **Production Release**: Full deployment with health checks
+7. **Continuous Monitoring**: Track performance and model drift
+
+---
+
+### 🔄 Model Lifecycle Workflow
+
+```mermaid
+graph TD
+    A[🎯 Business Requirements] --> B[📊 Data Collection]
+    B --> C[🔬 Model Development]
+    C --> D[🧪 Model Training]
+    D --> E[✅ Model Validation]
+    E --> F[🚀 Model Deployment]
+    F --> G[📊 Model Monitoring]
+    G --> H{🔄 Performance OK?}
+    H -->|Yes| I[📈 Continue Monitoring]
+    H -->|No| J[🔔 Alert & Investigation]
+    J --> K{🔍 Root Cause?}
+    K -->|Data Drift| L[📊 Data Retraining]
+    K -->|Concept Drift| M[🎯 Model Retraining]
+    K -->|System Issue| N[🔧 Technical Fix]
+    L --> D
+    M --> C
+    N --> F
+    I --> G
+    
+    G --> G1[Accuracy Tracking]
+    G --> G2[Latency Monitoring]
+    G --> G3[Resource Usage]
+    G --> G4[Data Quality Checks]
+```
+
+**Lifecycle Stages:**
+1. **Requirements Analysis**: Define business objectives and success metrics
+2. **Data Pipeline**: Establish reliable data collection and processing
+3. **Model Development**: Iterative algorithm design and testing
+4. **Training & Validation**: Robust model training with cross-validation
+5. **Production Deployment**: Scalable model serving infrastructure
+6. **Continuous Monitoring**: Track performance, drift, and system health
+7. **Model Maintenance**: Regular updates and retraining cycles
+
+---
+
 ## 🚀 Implementation Pipeline
 
 ### 1️⃣ Data Loading & Initial Setup
