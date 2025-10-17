@@ -56,12 +56,11 @@ The dataset contains medical examination data with the following features:
 ## 🔧 Technical Architecture
 
 ### Technology Stack
-- **Apache PySpark 3.5.1**: Distributed computing framework
-- **PySpark ML**: Machine learning library
-- **Python 3.12**: Programming language
-- **Jupyter Notebook**: Development environment
-- **Pandas**: Data manipulation
+- **PySpark 3.5.1**: Distributed computing and ML framework
+- **Google Colab**: Cloud-based development environment
+- **Python 3.10**: Programming language
 - **Matplotlib/Seaborn**: Data visualization
+- **Pandas**: Data manipulation and analysis
 
 ### Pipeline Architecture
 
@@ -78,27 +77,27 @@ Raw Data → Data Cleaning → Feature Engineering → Model Training → Evalua
 
 ```mermaid
 graph TD
-    A[📊 Raw Dataset<br/>heart-disease.csv] --> B[🔍 Data Inspection]
-    B --> C[📋 Schema Validation]
-    C --> D[🧹 Data Cleaning]
-    D --> E[📈 Exploratory Analysis]
-    E --> F[🔧 Feature Engineering]
-    F --> G[✅ Data Validation]
-    G --> H[💾 Processed Dataset]
+    A["📊 Raw Dataset<br/>heart-disease.csv"] --> B["🔍 Data Inspection"]
+    B --> C["📋 Schema Validation"]
+    C --> D["🧹 Data Cleaning"]
+    D --> E["📈 Exploratory Analysis"]
+    E --> F["🔧 Feature Engineering"]
+    F --> G["✅ Data Validation"]
+    G --> H["💾 Processed Dataset"]
     
-    D --> D1[Remove Missing Values (?)]
-    D --> D2[Handle Outliers]
-    D --> D3[Data Type Conversion]
+    D --> D1["Remove Missing Values (?)"]
+    D --> D2["Handle Outliers"]
+    D --> D3["Data Type Conversion"]
     
-    E --> E1[Statistical Summary]
-    E --> E2[Correlation Analysis]
-    E --> E3[Distribution Analysis]
-    E --> E4[Class Balance Check]
+    E --> E1["Statistical Summary"]
+    E --> E2["Correlation Analysis"]
+    E --> E3["Distribution Analysis"]
+    E --> E4["Class Balance Check"]
     
-    F --> F1[Categorical Encoding]
-    F --> F2[Feature Scaling]
-    F --> F3[Vector Assembly]
-    F --> F4[Train-Test Split]
+    F --> F1["Categorical Encoding"]
+    F --> F2["Feature Scaling"]
+    F --> F3["Vector Assembly"]
+    F --> F4["Train-Test Split"]
 ```
 
 **Key Steps:**
@@ -158,44 +157,44 @@ graph TD
 
 ```mermaid
 graph TD
-    A[⚙️ Environment Setup] --> B[📚 Requirements Installation]
-    B --> C[🔧 Spark Configuration]
-    C --> D[📁 Project Structure]
-    D --> E[🧪 Development Phase]
-    E --> F[🧪 Testing Phase]
-    F --> G[📖 Documentation]
-    G --> H[🚀 Deployment]
+    A["⚙️ Google Colab Setup"] --> B["📚 Requirements Installation"]
+    B --> C["🔧 PySpark Configuration"]
+    C --> D["📁 Project Structure"]
+    D --> E["🧪 Development Phase"]
+    E --> F["🧪 Testing Phase"]
+    F --> G["📖 Documentation"]
+    G --> H["🚀 Deployment"]
     
-    A --> A1[Java JDK Installation]
-    A --> A2[Python 3.9+ Setup]
-    A --> A3[Virtual Environment]
+    A --> A1["Google Colab Runtime"]
+    A --> A2["Python Environment"]
+    A --> A3["GPU/TPU Access"]
     
-    B --> B1[PySpark 3.5.1]
-    B --> B2[ML Dependencies]
-    B --> B3[Visualization Tools]
+    B --> B1["PySpark 3.5.1"]
+    B --> B2["ML Dependencies"]
+    B --> B3["Visualization Tools"]
     
-    E --> E1[Data Exploration]
-    E --> E2[Model Development]
-    E --> E3[Pipeline Creation]
-    E --> E4[Performance Tuning]
+    E --> E1["Data Exploration"]
+    E --> E2["Model Development"]
+    E --> E3["Pipeline Creation"]
+    E --> E4["Performance Tuning"]
     
-    F --> F1[Unit Testing]
-    F --> F2[Integration Testing]
-    F --> F3[Model Validation]
-    F --> F4[Performance Testing]
+    F --> F1["Unit Testing"]
+    F --> F2["Integration Testing"]
+    F --> F3["Model Validation"]
+    F --> F4["Performance Testing"]
     
-    H --> H1[Local Deployment]
-    H --> H2[Cloud Deployment]
-    H --> H3[API Endpoint]
+    H --> H1["Colab Deployment"]
+    H --> H2["Cloud Export"]
+    H --> H3["Model Sharing"]
 ```
 
 **Development Steps:**
-1. **Environment Setup**: Configure Java, Python, and Spark
-2. **Dependency Management**: Install required packages and libraries
+1. **Google Colab Setup**: Configure cloud environment and runtime
+2. **Dependency Management**: Install PySpark and required packages
 3. **Code Development**: Implement data processing and ML pipelines
 4. **Testing**: Validate functionality and model performance
 5. **Documentation**: Create comprehensive project documentation
-6. **Deployment**: Prepare for production environment
+6. **Deployment**: Export and share models from Colab
 
 ---
 
@@ -540,18 +539,23 @@ new_patient = {
 ## 🛠️ Installation & Setup
 
 ### Prerequisites
-```bash
-# Required Python packages
-pip install pyspark==3.5.1
-pip install pandas matplotlib seaborn
-pip install jupyter notebook
+```python
+# Google Colab Environment (No additional setup required)
+# PySpark automatically installs with dependencies
+!pip install pyspark==3.5.1
+!pip install matplotlib seaborn
 ```
 
-### Environment Setup
+### Google Colab Setup
 ```python
-import os
-os.environ['JAVA_HOME'] = '/path/to/java'  # Required for Spark
-os.environ['SPARK_HOME'] = '/path/to/spark'
+# Install PySpark in Google Colab
+!pip install pyspark==3.5.1
+
+# Import required libraries
+from pyspark.sql import SparkSession
+import pandas as pd
+import matplotlib.pyplot as plt
+import seaborn as sns
 ```
 
 ### Data Requirements
