@@ -1,14 +1,8 @@
-# IDE and Editor files
+# IDE
 .vscode/
 .idea/
 *.swp
 *.swo
-*~
-
-# History and temporary files
-.history/
-.qodo/
-.temp/
 
 # Python
 __pycache__/
@@ -16,24 +10,51 @@ __pycache__/
 *$py.class
 *.so
 .Python
-env/
-venv/
-.venv
-pip-log.txt
-pip-delete-this-directory.txt
+build/
+develop-eggs/
+dist/
+downloads/
+eggs/
+.eggs/
+lib/
+lib64/
+parts/
+sdist/
+var/
+wheels/
+*.egg-info/
+.installed.cfg
+*.egg
+MANIFEST
 
-# Jupyter Notebook
+# Virtual Environment
+venv/
+env/
+ENV/
+env.bak/
+venv.bak/
+
+# Jupyter Notebooks
 .ipynb_checkpoints
 
-# Operating System
-.DS_Store
-.DS_Store?
-._*
-.Spotlight-V100
-.Trashes
-ehthumbs.db
-Thumbs.db
+# Spark
+metastore_db/
+derby.log
+spark-warehouse/
+
+# Data files
+*.csv
+*.json
+*.parquet
+data/
+datasets/
 
 # Logs
 *.log
-logs/
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Environment variables
+.env
